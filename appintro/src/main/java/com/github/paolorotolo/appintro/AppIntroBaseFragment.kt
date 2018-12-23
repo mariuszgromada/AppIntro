@@ -15,6 +15,9 @@ import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 
+import android.os.Build
+import android.util.TypedValue
+
 internal const val ARG_TITLE = "title"
 internal const val ARG_TITLE_TYPEFACE = "title_typeface"
 internal const val ARG_TITLE_TYPEFACE_RES = "title_typeface_res"
@@ -97,6 +100,11 @@ abstract class AppIntroBaseFragment : Fragment(), ISlideSelectionListener, ISlid
         val descriptionText = view.findViewById<TextView>(R.id.description)
         val slideImage = view.findViewById<ImageView>(R.id.image)
         mainLayout = view.findViewById(R.id.main)
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val px = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, 16, slideImage.getResources().getDisplayMetrics() )
+            slideImage.setElevation(px)
+        }
 
         titleText.text = title
         descriptionText.text = description
