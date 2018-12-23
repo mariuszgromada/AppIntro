@@ -102,7 +102,7 @@ abstract class AppIntroBaseFragment : Fragment(), ISlideSelectionListener, ISlid
         mainLayout = view.findViewById(R.id.main)
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val px = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, 16, slideImage.getResources().getDisplayMetrics() )
+            val px = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, 16f, slideImage.getResources().getDisplayMetrics() )
             slideImage.setElevation(px)
         }
 
